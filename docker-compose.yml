@@ -1,0 +1,22 @@
+version: '2'
+services:
+    odata:
+        build: ./docker/odata
+        ports:
+            - 80:80
+            - 443:443
+        depends_on:
+            - db
+        links:
+            - db
+    nfldb:
+        build: ./docker/nfldb
+        depends_on:
+            - db
+        links:
+            - db
+    db:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: nfldb
+            POSTGRES_USER: nfldb
