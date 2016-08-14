@@ -1,7 +1,7 @@
 version: '2'
 services:
     odata:
-        build: ./docker/odata
+        build: ./odata
         ports:
             - 80:80
             - 443:443
@@ -9,14 +9,16 @@ services:
             - db
         links:
             - db
-    nfldb:
-        build: ./docker/nfldb
-        depends_on:
-            - db
-        links:
-            - db
+    # nfldb:
+    #     build: ./nfldb
+    #     depends_on:
+    #         - db
+    #     links:
+    #         - db
     db:
         image: postgres
+        ports:
+            - 5432:5432
         environment:
             POSTGRES_PASSWORD: nfldb
             POSTGRES_USER: nfldb
