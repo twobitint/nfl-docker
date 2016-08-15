@@ -5,7 +5,8 @@ RUN yum -y update && yum -y install \
     postgresql-server \
     postgresql-devel \
     gcc \
-    python-devel
+    python-devel \
+    nmap
 
 RUN curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \

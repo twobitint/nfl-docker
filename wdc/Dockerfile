@@ -34,24 +34,6 @@ RUN mkdir /etc/httpd/ssl \
     -keyout /etc/httpd/ssl/apache.key \
     -out /etc/httpd/ssl/apache.crt
 
-COPY get-composer.sh /
-
-# Need Laravel dependencies
-RUN yum install -y wget git \
-    && chmod 775 get-composer.sh \
-    && ./get-composer.sh \
-    && rm -r /var/www/html \
-    && git clone https://github.com/twobitint/nfl-odata.git /var/www/html \
-    && cd /var/www/html \
-    && chown -R apache storage \
-    && chown -R apache bootstrap/cache \
-    && yum install -y php70w-mbstring php70w-xml \
-    && php /composer.phar install
-
-RUN cd /var/www/html \
-    && cp .env.example .env \
-    && php artisan key:generate
-
 # Start Apache
 EXPOSE 80 443
 ADD run-httpd.sh /run-httpd.sh
