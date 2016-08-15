@@ -9,12 +9,12 @@ services:
             - db
         links:
             - db
-    # nfldb:
-    #     build: ./nfldb
-    #     depends_on:
-    #         - db
-    #     links:
-    #         - db
+    nfldb:
+        build: ./nfldb
+        depends_on:
+            - db
+        links:
+            - db
     db:
         image: postgres
         ports:
