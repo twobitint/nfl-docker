@@ -19,6 +19,11 @@ ENV M2_HOME="/apache-maven-3.3.9"
 RUN git clone https://github.com/shunjikonishi/odata-producer
 COPY Team.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
 COPY Game.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
+COPY Player.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
+COPY Drive.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
+COPY Play_Player.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
+COPY Agg_Play.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
+COPY Play.java /odata-producer/src/main/java/jp/co/flect/odataproducer/entities
 
 # build source
 RUN cd odata-producer \

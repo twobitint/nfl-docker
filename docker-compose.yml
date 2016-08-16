@@ -10,12 +10,12 @@ services:
             - db
         environment:
             DATABASE_URL: "postgres://nfldb:nfldb@db/nfldb"
-    nfldb-update:
-        build: ./nfldb-update
-        depends_on:
-            - db
-        links:
-            - db
+    # nfldb-update:
+    #     build: ./nfldb-update
+    #     depends_on:
+    #         - db
+    #     links:
+    #         - db
     db:
         image: postgres
         ports:
