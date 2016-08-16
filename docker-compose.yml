@@ -1,16 +1,17 @@
 version: '2'
 services:
-    wdc:
-        build: ./wdc
+    odata:
+        build: ./odata
         ports:
-            - 80:80
-            - 443:443
+            - 5000:5000
         depends_on:
             - db
         links:
             - db
-    nfldb:
-        build: ./nfldb
+        environment:
+            DATABASE_URL: "postgres://nfldb:nfldb@db/nfldb"
+    nfldb-update:
+        build: ./nfldb-update
         depends_on:
             - db
         links:

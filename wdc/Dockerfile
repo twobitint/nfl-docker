@@ -7,7 +7,8 @@ RUN curl -O https://mirror.webtatic.com/yum/RPM-GPG-KEY-webtatic-el7 \
     && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 # Install the PHP and Apache services
-RUN yum -y update && yum -y install \
+RUN yum update -y
+RUN yum install -y \
     php70w \
     php70w-opcache \
     php70w-common \
